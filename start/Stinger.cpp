@@ -11,7 +11,7 @@ int stingerSpeed = 500;
 
 Stinger::Stinger() : Entity()
 {
-	this->addSprite("assets/Bullet1.tga");
+	this->addSprite("assets/Stinger.tga");
 }
 
 Stinger::~Stinger()

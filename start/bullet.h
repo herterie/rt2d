@@ -29,4 +29,4 @@ private:
 	/* add your private declarations */
 };
 
-#endif /* MYENTITY_H */
+#endif /* MYBULLET_H */

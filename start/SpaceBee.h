@@ -1,7 +1,7 @@
 /**
  * Copyright 2015 Your Name <you@yourhost.com>
  *
- * @file myentity.h
+ * @file SpaceBee.h
  *
  * @brief description of MyEntity behavior.
  */
@@ -33,5 +33,5 @@ private:
 	Timer t;
 };
 
-#endif /* MYENTITY_H */
+#endif /* SPACEBEE_H */
 #pragma once

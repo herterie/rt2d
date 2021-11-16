@@ -11,6 +11,8 @@
 
 MyScene::MyScene() : Scene()
 {
+	// Background sprite
+	this->addSprite("assets/Space1.tga");
 	// start the timer.
 	t.start();
 
@@ -30,16 +32,21 @@ MyScene::MyScene() : Scene()
 
 
 MyScene::~MyScene()
-{
-	// deconstruct and delete the Tree
+{	
 	this->removeChild(myentity);
-	this->removeChild(bullet);
 	this->removeChild(spacebee);
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete myentity;
-	delete bullet;
 	delete spacebee;
+
+	if (bullet != nullptr) {
+		bullet = nullptr;
+	}
+	else {
+		this->removeChild(bullet);
+		delete bullet;
+	}
 }
 
 void MyScene::update(float deltaTime)
