@@ -14,6 +14,7 @@
 #include "myentity.h"
 #include "bullet.h"
 #include "SpaceBee.h"
+#include "Stinger.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -34,6 +35,7 @@ private:
 	MyEntity* myentity;
 	MyBullet* bullet;
 	SpaceBee* spacebee;
+	Stinger* stinger;
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
 };

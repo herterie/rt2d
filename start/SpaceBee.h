@@ -11,8 +11,6 @@
 
 #include <rt2d/entity.h>
 
-#include "Stinger.h"
-
  /// @brief The MyEntity class is the Entity implementation.
 class SpaceBee : public Entity
 {
@@ -29,7 +27,6 @@ public:
 
 private:
 	/* add your private declarations */
-	Stinger* stinger;
 	Timer t;
 };
 

@@ -47,6 +47,13 @@ MyScene::~MyScene()
 		this->removeChild(bullet);
 		delete bullet;
 	}
+	if (stinger != nullptr) {
+		stinger = nullptr;
+	}
+	else {
+		this->removeChild(stinger);
+		delete stinger;
+	}
 }
 
 void MyScene::update(float deltaTime)
@@ -57,6 +64,14 @@ void MyScene::update(float deltaTime)
 		bullet->position.y -= 80;
 		this->addChild(bullet);
 	}
+	if (t.seconds() > 2.0f) {
+		stinger = new Stinger();
+		stinger->position = spacebee->position;
+		stinger->position.y += 30;
+		this->addChild(stinger);
+		t.start();
+	}
+
 	// ###############################################################
 	// Escape key stops the Scene
 	// ###############################################################

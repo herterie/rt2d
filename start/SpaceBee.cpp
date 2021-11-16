@@ -13,21 +13,15 @@ int beeSpeed = 300;
 SpaceBee::SpaceBee() : Entity()
 {
 	this->addSprite("assets/SpaceBee.tga");
-	//stinger = new Stinger();
-	//stinger->position = this->position;
 }
 
 SpaceBee::~SpaceBee()
 {
-	//this->removeChild(stinger);
-
-	//delete stinger;
+	
 }
 
 void SpaceBee::update(float deltaTime)
 {
-	//this->addChild(stinger);
-
 	beeVelocity.x = 0;
 	beeVelocity.normalize();
 
