@@ -7,12 +7,12 @@
 #include "myentity.h"
 
 Vector2 velocity;
-int speed = 200;
+int speed = 300;
 
 
 MyEntity::MyEntity() : Entity()
 {
-	this->addSprite("assets/square.tga");
+	this->addSprite("assets/evan.tga");
 }
 
 MyEntity::~MyEntity()
@@ -22,6 +22,7 @@ MyEntity::~MyEntity()
 
 void MyEntity::update(float deltaTime)
 {
+
 	velocity.x = (input()->getKey(KeyCode::D) - input()->getKey(KeyCode::A));
 	velocity.y = (input()->getKey(KeyCode::S) - input()->getKey(KeyCode::W));
 	velocity.normalize();

@@ -19,9 +19,13 @@ MyScene::MyScene() : Scene()
 	myentity = new MyEntity();
 	myentity->position = Point2(SWIDTH/2, SHEIGHT/2);
 
+	spacebee = new SpaceBee();
+	spacebee->position = Point2(SWIDTH / 2, 40);
+
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(myentity);
+	this->addChild(spacebee);
 }
 
 
@@ -29,13 +33,23 @@ MyScene::~MyScene()
 {
 	// deconstruct and delete the Tree
 	this->removeChild(myentity);
+	this->removeChild(bullet);
+	this->removeChild(spacebee);
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete myentity;
+	delete bullet;
+	delete spacebee;
 }
 
 void MyScene::update(float deltaTime)
 {
+	if (input()->getKeyDown(KeyCode::Space)) {
+		bullet = new MyBullet();
+		bullet->position = myentity->position;
+		bullet->position.y -= 80;
+		this->addChild(bullet);
+	}
 	// ###############################################################
 	// Escape key stops the Scene
 	// ###############################################################
