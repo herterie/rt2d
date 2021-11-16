@@ -42,23 +42,4 @@ void MyScene::update(float deltaTime)
 	if (input()->getKeyUp(KeyCode::Escape)) {
 		this->stop();
 	}
-
-	// ###############################################################
-	// Spacebar scales myentity
-	// ###############################################################
-	if (input()->getKeyDown(KeyCode::Space)) {
-		myentity->scale = Point(0.5f, 0.5f);
-	}
-	if (input()->getKeyUp(KeyCode::Space)) {
-		myentity->scale = Point(1.0f, 1.0f);
-	}
-
-	// ###############################################################
-	// Rotate color
-	// ###############################################################
-	if (t.seconds() > 0.0333f) {
-		RGBAColor color = myentity->sprite()->color;
-		myentity->sprite()->color = Color::rotate(color, 0.01f);
-		t.start();
-	}
 }

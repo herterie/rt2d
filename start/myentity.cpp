@@ -6,10 +6,13 @@
 
 #include "myentity.h"
 
+Vector2 velocity;
+int speed = 200;
+
+
 MyEntity::MyEntity() : Entity()
 {
 	this->addSprite("assets/square.tga");
-	this->sprite()->color = RED;
 }
 
 MyEntity::~MyEntity()
@@ -19,11 +22,10 @@ MyEntity::~MyEntity()
 
 void MyEntity::update(float deltaTime)
 {
-	// ###############################################################
-	// Rotate
-	// ###############################################################
-	this->rotation.z += HALF_PI * deltaTime; // 90 deg/sec
-	if (this->rotation.z > TWO_PI) {
-		this->rotation.z -= TWO_PI;
-	}
+	velocity.x = (input()->getKey(KeyCode::D) - input()->getKey(KeyCode::A));
+	velocity.y = (input()->getKey(KeyCode::S) - input()->getKey(KeyCode::W));
+	velocity.normalize();
+
+	this->position.x += (velocity.x * speed) * deltaTime;
+	this->position.y += (velocity.y * speed) * deltaTime;
 }
