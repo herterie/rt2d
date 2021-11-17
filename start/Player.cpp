@@ -4,23 +4,23 @@
  * Copyright 2015 Your Name <you@yourhost.com>
  */
 
-#include "myentity.h"
+#include "Player.h"
 
 Vector2 velocity;
 int speed = 300;
 
 
-MyEntity::MyEntity() : Entity()
+Player::Player() : Entity()
 {
 	this->addSprite("assets/evan.tga");
 }
 
-MyEntity::~MyEntity()
+Player::~Player()
 {
 
 }
 
-void MyEntity::update(float deltaTime)
+void Player::update(float deltaTime)
 {
 
 	velocity.x = (input()->getKey(KeyCode::D) - input()->getKey(KeyCode::A));

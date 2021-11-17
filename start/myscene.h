@@ -11,7 +11,7 @@
 
 #include <rt2d/scene.h>
 
-#include "myentity.h"
+#include "Player.h"
 #include "bullet.h"
 #include "SpaceBee.h"
 #include "Stinger.h"
@@ -32,7 +32,7 @@ public:
 
 private:
 	/// @brief the rotating square in the middle of the screen
-	MyEntity* myentity;
+	Player* myentity;
 	MyBullet* bullet;
 	SpaceBee* spacebee;
 	Stinger* stinger;
