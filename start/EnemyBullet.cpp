@@ -4,22 +4,22 @@
  * Copyright 2015 Your Name <you@yourhost.com>
  */
 
-#include "Stinger.h"
+#include "EnemyBullet.h"
 
 Vector2 stingerVelocity;
 int stingerSpeed = 500;
 
-Stinger::Stinger() : Entity()
+EnemyBullet::EnemyBullet() : Entity()
 {
 	this->addSprite("assets/Stinger.tga");
 }
 
-Stinger::~Stinger()
+EnemyBullet::~EnemyBullet()
 {
 
 }
 
-void Stinger::update(float deltaTime)
+void EnemyBullet::update(float deltaTime)
 {
 	stingerVelocity.y = +1;
 

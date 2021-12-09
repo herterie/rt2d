@@ -14,7 +14,7 @@
 #include "Player.h"
 #include "bullet.h"
 #include "SpaceBee.h"
-#include "Stinger.h"
+#include "EnemyBullet.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -31,12 +31,11 @@ public:
 	virtual void update(float deltaTime);
 
 private:
-	/// @brief the rotating square in the middle of the screen
 	Player* myentity;
 	MyBullet* bullet;
 	SpaceBee* spacebee;
-	Stinger* stinger;
-	/// @brief a Timer to rotate the color every n seconds
+	EnemyBullet* stinger;
+	/// @brief a Timer
 	Timer t;
 };
 

@@ -22,7 +22,6 @@ Player::~Player()
 
 void Player::update(float deltaTime)
 {
-
 	velocity.x = (input()->getKey(KeyCode::D) - input()->getKey(KeyCode::A));
 	velocity.y = (input()->getKey(KeyCode::S) - input()->getKey(KeyCode::W));
 	velocity.normalize();

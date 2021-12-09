@@ -6,19 +6,19 @@
  * @brief description of MyEntity behavior.
  */
 
-#ifndef STINGER_H
-#define STINGER_H
+#ifndef ENEMYBULLET_H
+#define ENEMYBULLET_H
 
 #include <rt2d/entity.h>
 
  /// @brief The MyEntity class is the Entity implementation.
-class Stinger : public Entity
+class EnemyBullet : public Entity
 {
 public:
 	/// @brief Constructor
-	Stinger();
+	EnemyBullet();
 	/// @brief Destructor
-	virtual ~Stinger();
+	virtual ~EnemyBullet();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
