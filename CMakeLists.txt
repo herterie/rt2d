@@ -162,8 +162,8 @@ IF(MAKE_START)
 		start/bullet.h
 		start/SpaceBee.cpp
 		start/SpaceBee.h
-		start/Stinger.cpp
-		start/Stinger.h
+		start/EnemyBullet.cpp
+		start/EnemyBullet.h
 	)
 	target_link_libraries(start
 		${ALL_GRAPHICS_LIBS}
