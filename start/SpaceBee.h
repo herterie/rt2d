@@ -25,9 +25,15 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 	void SpaceBee::TakeDamage(int dmg);
-	bool SpaceBee::Alive();
+	bool SpaceBee::IsDeath();
+
+	int beeType = 0; // 1 = Worker Bee, 2 = Bee keeper,
 private:
 	/* add your private declarations */
+	Vector2 beeVelocity;
+	int beeSpeed = 300;
+	int Health = 100;
+	bool alive = true;
 };
 
 #endif /* SPACEBEE_H */

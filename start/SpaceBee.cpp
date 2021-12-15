@@ -6,11 +6,7 @@
 
 #include "SpaceBee.h"
 
-Vector2 beeVelocity;
-int beeSpeed = 300;
-int Enemyhealth = 100;
-int beeType = 0; // 1 = Worker Bee, 2 = Bee keeper,
-bool death = false;
+
 
 SpaceBee::SpaceBee(int type) : Entity()
 {
@@ -42,18 +38,19 @@ void SpaceBee::update(float deltaTime)
 
 	this->position.x += (beeVelocity.x * beeSpeed) * deltaTime;
 
-	if ((Enemyhealth <= 0) && (death == false)){
+	if ((Health <= 0) && (alive == true)){
 		this->ddSquare(-32, -32, 64, 64, GREEN);
-		death = true;
+		alive = false;
 	}
 }
 
 void SpaceBee::TakeDamage(int dmg) {
-	Enemyhealth -= dmg;
+	Health -= dmg;
 }
+	
 
-bool SpaceBee::Alive() {
-	if (Enemyhealth <= 0) {
+bool SpaceBee::IsDeath() {
+	if (Health <= 0) {
 		return true;
 	}
 	else {

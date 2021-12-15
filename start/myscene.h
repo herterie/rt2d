@@ -29,18 +29,32 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
+	//functions
+	void MyScene::SpawnEnemy(int type);
+	bool MyScene::CheckPlayerToEnemyCollision(Player& pl, SpaceBee& sb);
+	bool MyScene::CheckPbulletToEnemyCollision(MyBullet& pb, SpaceBee& sb);
+	bool MyScene::CheckEbulletToEPlayerCollision(Player& pl, EnemyBullet& eb);
+
 
 private:
+	//variabels
+	int Enemies[1][8];  //declaration of enemies 2D array  
+	int player[5];  //declaration of player array 
+
+	// Vector lists
+	std::vector<MyBullet*> BulletList;
+	std::vector<SpaceBee*> EnemyList;
+	std::vector<EnemyBullet*> EnemyBulletList;
+
 	/// @brief Player 
 	Player* myentity;
 
 	/// @brief Enemy
 	SpaceBee* spacebee;
-	SpaceBee* spacebee1;
 	EnemyBullet* stinger;
 
 	/// @brief Timers
-	Timer t;
+	Timer EnemyAttackSpeed;
 	Timer BulletReloadTimer;
 	Timer AttaskSpeed;
 
