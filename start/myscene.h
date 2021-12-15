@@ -31,12 +31,19 @@ public:
 	virtual void update(float deltaTime);
 
 private:
+	/// @brief Player 
 	Player* myentity;
-	MyBullet* bullet;
+
+	/// @brief Enemy
 	SpaceBee* spacebee;
+	SpaceBee* spacebee1;
 	EnemyBullet* stinger;
-	/// @brief a Timer
+
+	/// @brief Timers
 	Timer t;
+	Timer BulletReloadTimer;
+	Timer AttaskSpeed;
+
 };
 
 #endif /* SCENE00_H */

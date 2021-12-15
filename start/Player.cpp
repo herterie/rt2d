@@ -8,7 +8,7 @@
 
 Vector2 velocity;
 int speed = 300;
-
+int health = 100;
 
 Player::Player() : Entity()
 {
@@ -28,4 +28,8 @@ void Player::update(float deltaTime)
 
 	this->position.x += (velocity.x * speed) * deltaTime;
 	this->position.y += (velocity.y * speed) * deltaTime;
+}
+
+void Player::TakeDamage(int dmg) {
+	health -= dmg;
 }

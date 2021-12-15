@@ -16,7 +16,7 @@ class SpaceBee : public Entity
 {
 public:
 	/// @brief Constructor
-	SpaceBee();
+	SpaceBee(int type);
 	/// @brief Destructor
 	virtual ~SpaceBee();
 
@@ -24,10 +24,10 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-
+	void SpaceBee::TakeDamage(int dmg);
+	bool SpaceBee::Alive();
 private:
 	/* add your private declarations */
-	Timer t;
 };
 
 #endif /* SPACEBEE_H */
