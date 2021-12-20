@@ -26,8 +26,14 @@ public:
 	virtual void update(float deltaTime);
 	void SpaceBee::TakeDamage(int dmg);
 	bool SpaceBee::IsDeath();
+	void SpaceBee::XMoveTo(int x);
+
+	int BeeYPosition;
 
 	int beeType = 0; // 1 = Worker Bee, 2 = Bee keeper,
+	int guid; ///< @brief The _guid of this Entity
+	static int nextGuid; ///< @brief The _nextGuid of this Entity
+
 private:
 	/* add your private declarations */
 	Vector2 beeVelocity;

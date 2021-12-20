@@ -164,6 +164,8 @@ IF(MAKE_START)
 		start/SpaceBee.h
 		start/EnemyBullet.cpp
 		start/EnemyBullet.h
+		start/WaveText.cpp
+		start/Ui.h
 	)
 	target_link_libraries(start
 		${ALL_GRAPHICS_LIBS}

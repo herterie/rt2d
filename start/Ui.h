@@ -1,34 +1,35 @@
 /**
  * Copyright 2015 Your Name <you@yourhost.com>
  *
- * @file bullet.h
+ * @file myentity.h
  *
  * @brief description of MyEntity behavior.
  */
 
-#ifndef MYBULLET_H
-#define MYBULLET_H
+#ifndef UI_H
+#define UI_H
 
 #include <rt2d/entity.h>
 
- /// @brief The MyEntity class is the Entity implementation.
-class MyBullet : public Entity
+/// @brief The MyEntity class is the Entity implementation.
+class Ui : public Entity
 {
 public:
 	/// @brief Constructor
-	MyBullet();
+	Ui();
 	/// @brief Destructor
-	virtual ~MyBullet();
+	virtual ~Ui();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-	int _guid; ///< @brief The _guid of this Entity
-	static int _nextGuid; ///< @brief The _nextGuid of this Entity
+
+	void Ui::ShowWaveRound(int wave);
 
 private:
 	/* add your private declarations */
+	Timer Show;
 };
 
-#endif /* MYBULLET_H */
+#endif /* MYENTITY_H */

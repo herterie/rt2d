@@ -15,6 +15,7 @@
 #include "bullet.h"
 #include "SpaceBee.h"
 #include "EnemyBullet.h"
+#include "Ui.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -30,6 +31,8 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 	//functions
+	void MyScene::removeBullet(MyBullet* bullet);
+	void MyScene::PlaceEnemy();
 	void MyScene::SpawnEnemy(int type);
 	bool MyScene::CheckPlayerToEnemyCollision(Player& pl, SpaceBee& sb);
 	bool MyScene::CheckPbulletToEnemyCollision(MyBullet& pb, SpaceBee& sb);
@@ -39,12 +42,19 @@ public:
 private:
 	//variabels
 	int Enemies[1][8];  //declaration of enemies 2D array  
-	int player[5];  //declaration of player array 
+	int player[5];  //declaration of player array
+	int CurrentRound = 0;
+	int backLine;
+	bool ShowWaves = false;
 
 	// Vector lists
 	std::vector<MyBullet*> BulletList;
 	std::vector<SpaceBee*> EnemyList;
 	std::vector<EnemyBullet*> EnemyBulletList;
+	std::vector<SpaceBee*> BackLine;
+	std::vector<SpaceBee*> FrontLine;
+
+	Ui* WaveShow;
 
 	/// @brief Player 
 	Player* myentity;
@@ -57,7 +67,7 @@ private:
 	Timer EnemyAttackSpeed;
 	Timer BulletReloadTimer;
 	Timer AttaskSpeed;
-
+	Timer TextTimer;
 };
 
 #endif /* SCENE00_H */

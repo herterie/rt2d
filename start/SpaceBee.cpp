@@ -6,22 +6,28 @@
 
 #include "SpaceBee.h"
 
-
+int SpaceBee::nextGuid = 0;
 
 SpaceBee::SpaceBee(int type) : Entity()
 {
+	guid = nextGuid;
+	nextGuid++;
+
 	beeType = type;
 
 	switch (beeType)
 	{
 	default:
 		this->addSprite("assets/SpaceBee.tga");
+		BeeYPosition = 70;
 		break;
 	case 1:
 		this->addSprite("assets/SpaceBee.tga");
+		BeeYPosition = 70;
 		break;
 	case 2:
 		this->addSprite("assets/BeeKeeper.tga");
+		BeeYPosition = 140;
 		break;
 	}
 }
@@ -38,8 +44,11 @@ void SpaceBee::update(float deltaTime)
 
 	this->position.x += (beeVelocity.x * beeSpeed) * deltaTime;
 
+	if (this->position.y < BeeYPosition) {
+		this->position.y += 1.5f;
+	}
+
 	if ((Health <= 0) && (alive == true)){
-		this->ddSquare(-32, -32, 64, 64, GREEN);
 		alive = false;
 	}
 }
@@ -55,5 +64,13 @@ bool SpaceBee::IsDeath() {
 	}
 	else {
 		return false;
+	}
+}
+
+void SpaceBee::XMoveTo(int x) {
+	if (this->position.x > x+1) {
+		this->position.x -= 2;
+	}else if (this->position.x < x-1){
+		this->position.x += 2;
 	}
 }
