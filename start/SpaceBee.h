@@ -24,9 +24,9 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-	void SpaceBee::TakeDamage(int dmg);
-	bool SpaceBee::IsDeath();
-	void SpaceBee::XMoveTo(int x);
+	void TakeDamage(int dmg);
+	bool IsDeath();
+	void XMoveTo(int x);
 
 	int BeeYPosition;
 

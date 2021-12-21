@@ -31,12 +31,12 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 	//functions
-	void MyScene::removeBullet(MyBullet* bullet);
-	void MyScene::PlaceEnemy();
-	void MyScene::SpawnEnemy(int type);
-	bool MyScene::CheckPlayerToEnemyCollision(Player& pl, SpaceBee& sb);
-	bool MyScene::CheckPbulletToEnemyCollision(MyBullet& pb, SpaceBee& sb);
-	bool MyScene::CheckEbulletToEPlayerCollision(Player& pl, EnemyBullet& eb);
+	void removeBullet(MyBullet* bullet);
+	void PlaceEnemy();
+	void SpawnEnemy(int type);
+	bool CheckPlayerToEnemyCollision(Player& pl, SpaceBee& sb);
+	bool CheckPbulletToEnemyCollision(MyBullet& pb, SpaceBee& sb);
+	bool CheckEbulletToEPlayerCollision(Player& pl, EnemyBullet& eb);
 
 
 private:

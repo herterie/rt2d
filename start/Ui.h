@@ -25,7 +25,7 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
-	void Ui::ShowWaveRound(int wave);
+	void ShowWaveRound(int wave);
 
 private:
 	/* add your private declarations */

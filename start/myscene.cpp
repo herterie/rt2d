@@ -157,6 +157,7 @@ void MyScene::update(float deltaTime)
 			CurrentRound++;
 			break;
 		case 3:
+			SpawnEnemy(1);
 			//end mission
 			break;
 		}
@@ -229,7 +230,7 @@ void MyScene::update(float deltaTime)
 		if (CheckPlayerToEnemyCollision(*myentity, *EnemyList[i])) {
 			EnemyList[i]->TakeDamage(player[4]);
 			//EnemyList[i]->ddSquare(-32, -32, 64, 64, GREEN);
-			myentity->TakeDamage(50);
+			myentity->TakeDamage(player[4]);
 		}
 	}
 
@@ -246,12 +247,13 @@ void MyScene::update(float deltaTime)
 	
 	// player bullet to enemy check
 	for (int i = 0; i < BulletList.size(); i++) {
-		for (int j = 0; j < EnemyList.size(); j++)
-		if (CheckPbulletToEnemyCollision(*BulletList[i], *EnemyList[j])) {
-			EnemyList[j]->TakeDamage(player[4]);
-			this->removeChild(BulletList[i]);
-			removeBullet(BulletList[i]);
-			break;
+		for (int j = 0; j < EnemyList.size(); j++) {
+			if (CheckPbulletToEnemyCollision(*BulletList[i], *EnemyList[j])) {
+				EnemyList[j]->TakeDamage(player[4]);
+				this->removeChild(BulletList[i]);
+				removeBullet(BulletList[i]);
+				break;
+			}
 		}
 	}
 
