@@ -11,8 +11,6 @@
 MyEntity::MyEntity() : Entity()
 {
 	this->addSprite("assets/PlayerConcept.tga");
-	this->addSprite("assets/square.tga");
-	// text[0]->message("Test");
 }
 
 MyEntity::~MyEntity()

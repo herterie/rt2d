@@ -158,6 +158,8 @@ IF(MAKE_START)
 		start/player.h
 		start/myscene.cpp
 		start/myscene.h
+		#start/ActionButton.ccp
+		#start/ActionButton.h
 	)
 	target_link_libraries(start
 		${ALL_GRAPHICS_LIBS}
