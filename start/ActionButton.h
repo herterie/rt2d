@@ -9,8 +9,8 @@
 #ifndef MYENTITY_H
 #define MYENTITY_H
 
+#include <rt2d/scene.h>
 #include <rt2d/entity.h>
-#include <rt2d/text.h>
 
 
 /// @brief The MyEntity class is the Entity implementation.

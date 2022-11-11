@@ -11,7 +11,7 @@
 
 #include <rt2d/scene.h>
 
-#include "player.h"
+#include "ActionButton.h"
 //#include "ActionButton.h"
 
 /// @brief The MyScene class is the Scene implementation.
@@ -30,7 +30,7 @@ public:
 
 private:
 	/// @brief the rotating square in the middle of the screen
-	MyEntity* myentity;
+	MyEntity* Button1;
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
 };
