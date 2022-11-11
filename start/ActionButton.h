@@ -22,6 +22,10 @@ public:
 	/// @brief Destructor
 	virtual ~MyEntity();
 
+	void Hover();
+	void UnHover();
+	void Pressed();
+
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void

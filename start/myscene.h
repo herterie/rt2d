@@ -27,8 +27,14 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
+	bool CheckMouseHover(MyEntity& btn);
 
 private:
+	//variabels
+	int ActionBtn[1][4];  //declaration of enemies 2D array  
+
+	std::vector<MyEntity*> BtnList;
+
 	/// @brief the rotating square in the middle of the screen
 	MyEntity* Button1;
 	/// @brief a Timer to rotate the color every n seconds

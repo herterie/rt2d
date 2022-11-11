@@ -43,3 +43,15 @@ void MyEntity::update(float deltaTime)
 		ButtonIndex = 0;
 	}
 }
+
+void MyEntity::Hover() {
+	ButtonIndex = 1;
+}
+
+void MyEntity::UnHover() {
+	ButtonIndex = 0;
+}
+
+void MyEntity::Pressed() {
+	ButtonIndex = 2;
+}
