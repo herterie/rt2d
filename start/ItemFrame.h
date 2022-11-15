@@ -6,8 +6,8 @@
  * @brief description of MyEntity behavior.
  */
 
-#ifndef ACTIONBUTTON_H
-#define ACTIONBUTTON_H
+#ifndef ITEMFRAME_H
+#define ITEMFRAME_H
 
 #include <vector>
 #include <rt2d/scene.h>
@@ -15,14 +15,18 @@
 #include <rt2d/text.h>
 
 
-/// @brief The MyEntity class is the Entity implementation.
-class ActionButton : public Entity
+ /// @brief The MyEntity class is the Entity implementation.
+class ItemFrame : public Entity
 {
 public:
+	int mouse_x;
+	int mouse_y;
+	int SpriteIndex;
+	bool pressed;
 	/// @brief Constructor
-	ActionButton(int txtid);
+	ItemFrame(int id);
 	/// @brief Destructor
-	virtual ~ActionButton();
+	virtual ~ItemFrame();
 
 	//get mouse x and y
 	void Mouse(int x, int y);
@@ -35,17 +39,16 @@ public:
 	//check mouse collision
 	bool CheckMouseHover();
 
-	int mouse_x;
-	int mouse_y;
-	int TextIndex;
-	bool pressed;
+	void UpdateFrame();
+
+	
 
 protected:
 	std::vector<Text*> text;
 
 private:
 	/* add your private declarations */
-	
+
 };
 
-#endif /* ACTIONBUTTON_H */
+#endif /* ITEMFRAME_H */

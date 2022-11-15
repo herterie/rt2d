@@ -6,52 +6,70 @@
 
 #include "ActionButton.h"
 #include "myscene.h"
+#include <iostream>
 
-int ButtonIndex = 0;
 
-MyEntity::MyEntity() : Entity()
+ActionButton::ActionButton(int txtid) : Entity()
 {
+	pressed = false;
+
 	this->addSprite("assets/ButtonNormal.tga");
+	Text* line = new Text();
+	line->position.x -= 32;
+	line->scale = Point2(0.5f, 0.5f);
+	text.push_back(line);
+	this->addChild(line);
+
+	TextIndex = txtid;
 }
 
-MyEntity::~MyEntity()
+ActionButton::~ActionButton()
 {
-	//nothing
+	//nothig
 }
 
-void MyEntity::update(float deltaTime)
+void ActionButton::update(float deltaTime)
 {
-	switch (ButtonIndex) {
+	switch (TextIndex) {
 	case 0:
-		this->addSprite("assets/ButtonNormal.tga");
+		text[0]->message("case 1");
 		break;
 	case 1:
-		this->addSprite("assets/ButtonHover.tga");
+		text[0]->message("case 2");
 		break;
 	case 2:
-		this->addSprite("assets/ButtonPressed.tga");
+		text[0]->message("case 3");
 		break;
 	default:
-		this->addSprite("assets/ButtonNormal.tga");
+		text[0]->message("okay");
 		break;
 	}
 
-	if (input()->getKeyDown(KeyCode::Space)) {
-		ButtonIndex = 1;
+	if (CheckMouseHover()) {
+		if (input()->getMouseDown(0)) {
+			this->addSprite("assets/ButtonPressed.tga");
+			pressed = true;
+		}
+		else {
+			this->addSprite("assets/ButtonHover.tga");
+			pressed = false;
+		}
 	}
-	if (input()->getKeyUp(KeyCode::Space)) {
-		ButtonIndex = 0;
+	else {
+		this->addSprite("assets/ButtonNormal.tga");
+		pressed = false;
 	}
 }
 
-void MyEntity::Hover() {
-	ButtonIndex = 1;
+
+void ActionButton::Mouse(int x, int y) {
+	mouse_x = x;
+	mouse_y = y;
 }
 
-void MyEntity::UnHover() {
-	ButtonIndex = 0;
-}
-
-void MyEntity::Pressed() {
-	ButtonIndex = 2;
+bool ActionButton::CheckMouseHover() { // AABB - AABB collision with mouse
+	return (mouse_x < position.x + 128 && // mouse x lesser then button x2
+		mouse_x > position.x + -128 && // mouse x lesser then button x1
+		mouse_y < position.y + 64 && // mouse y lesser then button y2
+		mouse_y > position.y + -64); // mouse y lesser then button y1
 }

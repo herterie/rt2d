@@ -158,6 +158,10 @@ IF(MAKE_START)
 		start/ActionButton.h
 		start/myscene.cpp
 		start/myscene.h
+		start/ItemFrame.cpp
+		start/ItemFrame.h
+		start/Inventory.cpp
+		start/Inventory.h
 	)
 	target_link_libraries(start
 		${ALL_GRAPHICS_LIBS}
