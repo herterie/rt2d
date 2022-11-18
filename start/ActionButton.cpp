@@ -11,7 +11,12 @@
 
 ActionButton::ActionButton(int txtid) : Entity()
 {
+	mouse_x = 0;
+	mouse_y = 0;
+
 	pressed = false;
+	this->scale.x = 0.5;
+	this->scale.y = 0.5;
 
 	this->addSprite("assets/ButtonNormal.tga");
 	Text* line = new Text();
@@ -32,16 +37,19 @@ void ActionButton::update(float deltaTime)
 {
 	switch (TextIndex) {
 	case 0:
-		text[0]->message("case 1");
+		text[0]->message("Equip");
 		break;
 	case 1:
-		text[0]->message("case 2");
+		text[0]->message("Use");
 		break;
 	case 2:
-		text[0]->message("case 3");
+		text[0]->message("Drop");
+		break;
+	case 3:
+		text[0]->message("Cancel");
 		break;
 	default:
-		text[0]->message("okay");
+		text[0]->message("Cancel");
 		break;
 	}
 
@@ -68,8 +76,8 @@ void ActionButton::Mouse(int x, int y) {
 }
 
 bool ActionButton::CheckMouseHover() { // AABB - AABB collision with mouse
-	return (mouse_x < position.x + 128 && // mouse x lesser then button x2
-		mouse_x > position.x + -128 && // mouse x lesser then button x1
-		mouse_y < position.y + 64 && // mouse y lesser then button y2
-		mouse_y > position.y + -64); // mouse y lesser then button y1
+	return (mouse_x < position.x + 64 && // mouse x lesser then button x2
+		mouse_x > position.x + -64 && // mouse x lesser then button x1
+		mouse_y < position.y + 32 && // mouse y lesser then button y2
+		mouse_y > position.y + -32); // mouse y lesser then button y1
 }

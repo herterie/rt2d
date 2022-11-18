@@ -22,7 +22,9 @@ public:
 	int mouse_x;
 	int mouse_y;
 	int SpriteIndex;
-	bool pressed;
+	int ItemCategory;
+	bool Rightpressed;
+	bool Leftpressed;
 	/// @brief Constructor
 	ItemFrame(int id);
 	/// @brief Destructor

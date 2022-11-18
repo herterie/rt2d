@@ -18,9 +18,12 @@
 class Inventory : public Scene
 {
 public:
+	int FrameOffset;
 	//creating mouse x and y cords
 	int mousex;
 	int mousey;
+
+	bool DropDown;
 	/// @brief Constructor
 	Inventory();
 	/// @brief Destructor
@@ -42,6 +45,26 @@ private:
 	ItemFrame* Frame2;
 	ItemFrame* Frame3;
 	ItemFrame* Frame4;
+	ItemFrame* Frame5;
+	ItemFrame* Frame6;
+	ItemFrame* Frame7;
+	ItemFrame* Frame8;
+	ItemFrame* Frame9;
+	ItemFrame* Frame10;
+	ItemFrame* Frame11;
+	ItemFrame* Frame12;
+
+	ItemFrame* WeaponFrame;
+	ItemFrame* HelmFrame;
+	ItemFrame* ChestFrame;
+	ItemFrame* PantsFrame;
+	ItemFrame* BootsFrame;
+	ItemFrame* TrinketFrame;
+
+	ActionButton* EquipBtn;
+	ActionButton* UseBtn;
+	ActionButton* DropBtn;
+	ActionButton* CancelBtn;
 
 	void DropDownMenu();
 
