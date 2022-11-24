@@ -48,6 +48,9 @@ void ActionButton::update(float deltaTime)
 	case 3:
 		text[0]->message("Cancel");
 		break;
+	case 4:
+		text[0]->message("Unequip");
+		break;
 	default:
 		text[0]->message("Cancel");
 		break;

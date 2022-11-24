@@ -41,6 +41,7 @@ private:
 
 	//Vectors for frames
 	std::vector<ItemFrame*> Frames;
+	std::vector<ItemFrame*> Equipt;
 
 	//frames
 	ItemFrame* Frame1;
@@ -69,13 +70,16 @@ private:
 	ActionButton* UseBtn;
 	ActionButton* DropBtn;
 	ActionButton* CancelBtn;
+	ActionButton* UnEquipBtn;
 
-	void DropDownMenu(ItemFrame* id);
+	void DropDownMenu(ItemFrame* id, int type);
 	void RemoveMenu();
 	void EquipItem(ItemFrame* id);
 	void UseItem(ItemFrame* id);
 	void DropItem(ItemFrame* id);
 	void CancelMenu(ItemFrame* id);
+	void TakeItem(int id);
+	void Unequip(ItemFrame* id);
 
 
 };

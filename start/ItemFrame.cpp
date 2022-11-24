@@ -75,6 +75,10 @@ void ItemFrame::UpdateFrame() {
 		this->addSprite("assets/ItemFrames/Item3.tga");
 		ItemCategory = 1;
 		break;
+	case 4:
+		this->addSprite("assets/ItemFrames/Item4.tga");
+		ItemCategory = 8;
+		break;
 	case 100:
 		this->addSprite("assets/ItemFrames/WeaponFrame.tga");
 		ItemCategory = 0;
