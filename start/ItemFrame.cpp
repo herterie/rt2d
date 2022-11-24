@@ -17,12 +17,13 @@ ItemFrame::ItemFrame(int id) : Entity()
 	/*
 	0 = nothing
 	1 = weapon
-	2 = helmet
-	3 = chest
-	4 = pants
-	5 = boots
-	6 = trinket
-	7 = usable
+	2 = off hand
+	3 = helmet
+	4 = chest
+	5 = pants
+	6 = boots
+	7 = trinket
+	8 = usable
 	*/
 	this->addSprite("assets/ItemFrames/Frame.tga");
 	UpdateFrame();
@@ -79,31 +80,44 @@ void ItemFrame::UpdateFrame() {
 		ItemCategory = 0;
 		break;
 	case 101:
-		this->addSprite("assets/ItemFrames/HelmFrame.tga");
+		this->addSprite("assets/ItemFrames/OffHandFrame.tga");
 		ItemCategory = 0;
 		break;
 	case 102:
-		this->addSprite("assets/ItemFrames/ChestFrame.tga");
+		this->addSprite("assets/ItemFrames/HelmFrame.tga");
 		ItemCategory = 0;
 		break;
 	case 103:
-		this->addSprite("assets/ItemFrames/PantsFrame.tga");
+		this->addSprite("assets/ItemFrames/ChestFrame.tga");
 		ItemCategory = 0;
 		break;
 	case 104:
-		this->addSprite("assets/ItemFrames/BootsFrame.tga");
+		this->addSprite("assets/ItemFrames/PantsFrame.tga");
 		ItemCategory = 0;
 		break;
 	case 105:
-		this->addSprite("assets/ItemFrames/TrinketFrame.tga");
+		this->addSprite("assets/ItemFrames/BootsFrame.tga");
+		ItemCategory = 0;
+		break;
+	case 106:
+		this->addSprite("assets/ItemFrames/RingFrame.tga");
+		ItemCategory = 0;
+		break;
+	case 107:
+		this->addSprite("assets/ItemFrames/NecklessFrame.tga");
 		ItemCategory = 0;
 		break;
 
 	default:
-		this->addSprite("assets/ItemFrames/Test.tga");
+		this->addSprite("assets/ItemFrames/Frame.tga");
 		ItemCategory = 0;	
 		break;
 	}
+}
+
+void ItemFrame::ChangeIndex(int id) {
+	SpriteIndex = id;
+	UpdateFrame();
 }
 
 

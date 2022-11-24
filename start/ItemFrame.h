@@ -42,6 +42,7 @@ public:
 	bool CheckMouseHover();
 
 	void UpdateFrame();
+	void ChangeIndex(int id);
 
 	
 

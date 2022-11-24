@@ -23,6 +23,8 @@ public:
 	int mousex;
 	int mousey;
 
+	ItemFrame* SelectedFrame;
+
 	bool DropDown;
 	/// @brief Constructor
 	Inventory();
@@ -55,18 +57,25 @@ private:
 	ItemFrame* Frame12;
 
 	ItemFrame* WeaponFrame;
+	ItemFrame* OffHandFrame;
 	ItemFrame* HelmFrame;
 	ItemFrame* ChestFrame;
 	ItemFrame* PantsFrame;
 	ItemFrame* BootsFrame;
-	ItemFrame* TrinketFrame;
+	ItemFrame* RingFrame;
+	ItemFrame* NecklessFrame;
 
 	ActionButton* EquipBtn;
 	ActionButton* UseBtn;
 	ActionButton* DropBtn;
 	ActionButton* CancelBtn;
 
-	void DropDownMenu();
+	void DropDownMenu(ItemFrame* id);
+	void RemoveMenu();
+	void EquipItem(ItemFrame* id);
+	void UseItem(ItemFrame* id);
+	void DropItem(ItemFrame* id);
+	void CancelMenu(ItemFrame* id);
 
 
 };
