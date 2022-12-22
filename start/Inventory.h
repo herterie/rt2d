@@ -63,8 +63,9 @@ private:
 	ItemFrame* ChestFrame;
 	ItemFrame* PantsFrame;
 	ItemFrame* BootsFrame;
-	ItemFrame* RingFrame;
 	ItemFrame* NecklessFrame;
+	ItemFrame* RingFrame;
+	
 
 	ActionButton* EquipBtn;
 	ActionButton* UseBtn;

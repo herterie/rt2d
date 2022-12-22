@@ -13,6 +13,7 @@
 
 #include "ActionButton.h"
 #include "ItemFrame.h"
+#include "Inventory.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -21,6 +22,8 @@ public:
 	//creating mouse x and y cords
 	int mousex;
 	int mousey;
+
+	Inventory* inventory;
 	/// @brief Constructor
 	MyScene();
 	/// @brief Destructor
@@ -35,11 +38,11 @@ private:
 	//variabels
 
 	//Vectors for buttons
-	std::vector<ActionButton*> BtnList;
+	//std::vector<ActionButton*> BtnList;
 
 	/// @brief Buttons
-	ActionButton* Button1;
-	ActionButton* Button2;
+	//ActionButton* Button1;
+	//ActionButton* Button2;
 
 
 };

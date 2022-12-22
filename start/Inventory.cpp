@@ -22,11 +22,11 @@ Inventory::Inventory() : Scene()
 	FrameOffset = 50;
 
 	//making of drop down menu buttons
-	EquipBtn = new ActionButton(0);
-	UseBtn = new ActionButton(1);
-	DropBtn = new ActionButton(2);
-	CancelBtn = new ActionButton(3);
-	UnEquipBtn = new ActionButton(4);
+	EquipBtn = new ActionButton("Equip");
+	UseBtn = new ActionButton("Use");
+	DropBtn = new ActionButton("Drop");
+	CancelBtn = new ActionButton("Cancel");
+	UnEquipBtn = new ActionButton("Unequip");
 
 	EquipBtn->position.y = -400;
 	EquipBtn->position.x = -400;
@@ -85,42 +85,42 @@ Inventory::Inventory() : Scene()
 	Equipt.push_back(NecklessFrame);
 
 	//inventory frames
-	Frame1 = new ItemFrame(1);
+	Frame1 = new ItemFrame(3);
 	Frame1->position.y = 60 + FrameOffset;
 	Frame1->position.x = 60;
 	Frames.push_back(Frame1);
 
-	Frame2 = new ItemFrame(2);
+	Frame2 = new ItemFrame(6);
 	Frame2->position.y = 60 + FrameOffset;
 	Frame2->position.x = 160;
 	Frames.push_back(Frame2);
 
-	Frame3 = new ItemFrame(3);
+	Frame3 = new ItemFrame(9);
 	Frame3->position.y = 160 + FrameOffset;
 	Frame3->position.x = 60;
 	Frames.push_back(Frame3);
 
-	Frame4 = new ItemFrame(4);
+	Frame4 = new ItemFrame(12);
 	Frame4->position.y = 160 + FrameOffset;
 	Frame4->position.x = 160;
 	Frames.push_back(Frame4);
 
-	Frame5 = new ItemFrame(0);
+	Frame5 = new ItemFrame(15);
 	Frame5->position.y = 260 + FrameOffset;
 	Frame5->position.x = 60;
 	Frames.push_back(Frame5);
 
-	Frame6 = new ItemFrame(0);
+	Frame6 = new ItemFrame(18);
 	Frame6->position.y = 260 + FrameOffset;
 	Frame6->position.x = 160;
 	Frames.push_back(Frame6);
 
-	Frame7 = new ItemFrame(0);
+	Frame7 = new ItemFrame(21);
 	Frame7->position.y = 360 + FrameOffset;
 	Frame7->position.x = 60;
 	Frames.push_back(Frame7);
 
-	Frame8 = new ItemFrame(0);
+	Frame8 = new ItemFrame(24);
 	Frame8->position.y = 360 + FrameOffset;
 	Frame8->position.x = 160;
 	Frames.push_back(Frame8);
@@ -210,19 +210,6 @@ void Inventory::update(float deltaTime)
 	mousey = input()->getMouseY() + camera()->position.y - SHEIGHT / 2;
 	Point2 mouse = Point2(mousex, mousey);
 
-	Frame1->Mouse(mousex, mousey);
-	Frame2->Mouse(mousex, mousey);
-	Frame3->Mouse(mousex, mousey);
-	Frame4->Mouse(mousex, mousey);
-
-	for (int i = 0; i < Frames.size(); i++) {
-		Frames[i]->Mouse(mousex, mousey);
-	}
-
-	for (int i = 0; i < Equipt.size(); i++) {
-		Equipt[i]->Mouse(mousex, mousey);
-	}
-
 	for (int i = 0; i < Frames.size(); i++) {
 		if (Frames[i]->Rightpressed) {
 			if (Frames[i]->ItemCategory != 0) {
@@ -239,21 +226,12 @@ void Inventory::update(float deltaTime)
 				DropDownMenu(Equipt[i], 1);
 			}
 		}
-	}
-
-
-	// Escape key stops the Scene
+	}	// Escape key stops the Scene
 	if (input()->getKeyUp(KeyCode::Escape)) {
 		this->stop();
 	}
 
 	if (DropDown == true) {
-		EquipBtn->Mouse(mousex, mousey);
-		UseBtn->Mouse(mousex, mousey);
-		DropBtn->Mouse(mousex, mousey);
-		CancelBtn->Mouse(mousex, mousey);
-		UnEquipBtn->Mouse(mousex, mousey);
-
 		if (EquipBtn->pressed) {
 			EquipItem(SelectedFrame);
 		}
@@ -274,19 +252,30 @@ void Inventory::update(float deltaTime)
 
 void Inventory::DropDownMenu(ItemFrame* id, int type) {
 	if (DropDown == false) {
-		if (id->ItemCategory != 8 && type == 0) {
-			EquipBtn->position.y = mousey + 32;
-			EquipBtn->position.x = mousex + 64;
+		if (id->ItemCategory != 9 && type == 0) {
+			if (mousex >= SWIDTH - 64) {
+				EquipBtn->position.y = mousey - 32;
+				EquipBtn->position.x = mousex - 64;
 
-			DropBtn->position.y = mousey + 96;
-			DropBtn->position.x = mousex + 64;
+				DropBtn->position.y = mousey - 96;
+				DropBtn->position.x = mousex - 64;
 
-			CancelBtn->position.y = mousey + 160;
-			CancelBtn->position.x = mousex + 64;
+				CancelBtn->position.y = mousey - 160;
+				CancelBtn->position.x = mousex - 64;
+			}
+			else {
+				EquipBtn->position.y = mousey + 32;
+				EquipBtn->position.x = mousex + 64;
 
+				DropBtn->position.y = mousey + 96;
+				DropBtn->position.x = mousex + 64;
+
+				CancelBtn->position.y = mousey + 160;
+				CancelBtn->position.x = mousex + 64;
+			}
 			DropDown = true;
 		}
-		else if (id->ItemCategory == 8 && type == 0) {
+		else if (id->ItemCategory == 9 && type == 0) {
 			UseBtn->position.y = mousey + 32;
 			UseBtn->position.x = mousex + 64;
 
@@ -298,14 +287,26 @@ void Inventory::DropDownMenu(ItemFrame* id, int type) {
 			DropDown = true;
 		}
 		if  (type == 1) {
-			UnEquipBtn->position.y = mousey + 32;
-			UnEquipBtn->position.x = mousex + 64;
+			if (mousex >= SWIDTH - 128) {
+				UnEquipBtn->position.y = mousey + 32;
+				UnEquipBtn->position.x = mousex - 64;
 
-			DropBtn->position.y = mousey + 96;
-			DropBtn->position.x = mousex + 64;
+				DropBtn->position.y = mousey + 96;
+				DropBtn->position.x = mousex - 64;
 
-			CancelBtn->position.y = mousey + 160;
-			CancelBtn->position.x = mousex + 64;
+				CancelBtn->position.y = mousey + 160;
+				CancelBtn->position.x = mousex - 64;
+			}
+			else {
+				UnEquipBtn->position.y = mousey + 32;
+				UnEquipBtn->position.x = mousex + 64;
+
+				DropBtn->position.y = mousey + 96;
+				DropBtn->position.x = mousex + 64;
+
+				CancelBtn->position.y = mousey + 160;
+				CancelBtn->position.x = mousex + 64;
+			}
 			DropDown = true;
 		}
 		
@@ -345,8 +346,8 @@ void Inventory::EquipItem(ItemFrame* id) {
 			id->ChangeIndex(0);
 		}
 	}
-	else if (id->ItemCategory == 2) {
-		if (OffHandFrame->SpriteIndex != 100) {
+	if (id->ItemCategory == 2) {
+		if (OffHandFrame->SpriteIndex != 101) {
 			int oldEquipment = OffHandFrame->SpriteIndex;
 			int newEquipment = id->SpriteIndex;
 			OffHandFrame->ChangeIndex(newEquipment);
@@ -354,6 +355,78 @@ void Inventory::EquipItem(ItemFrame* id) {
 		}
 		else {
 			OffHandFrame->ChangeIndex(id->SpriteIndex);
+			id->ChangeIndex(0);
+		}
+	}
+	if (id->ItemCategory == 3) {
+		if (HelmFrame->SpriteIndex != 102) {
+			int oldEquipment = HelmFrame->SpriteIndex;
+			int newEquipment = id->SpriteIndex;
+			HelmFrame->ChangeIndex(newEquipment);
+			id->ChangeIndex(oldEquipment);
+		}
+		else {
+			HelmFrame->ChangeIndex(id->SpriteIndex);
+			id->ChangeIndex(0);
+		}
+	}
+	if (id->ItemCategory == 4) {
+		if (ChestFrame->SpriteIndex != 103) {
+			int oldEquipment = ChestFrame->SpriteIndex;
+			int newEquipment = id->SpriteIndex;
+			ChestFrame->ChangeIndex(newEquipment);
+			id->ChangeIndex(oldEquipment);
+		}
+		else {
+			ChestFrame->ChangeIndex(id->SpriteIndex);
+			id->ChangeIndex(0);
+		}
+	}
+	if (id->ItemCategory == 5) {
+		if (PantsFrame->SpriteIndex != 104) {
+			int oldEquipment = PantsFrame->SpriteIndex;
+			int newEquipment = id->SpriteIndex;
+			PantsFrame->ChangeIndex(newEquipment);
+			id->ChangeIndex(oldEquipment);
+		}
+		else {
+			PantsFrame->ChangeIndex(id->SpriteIndex);
+			id->ChangeIndex(0);
+		}
+	}
+	if (id->ItemCategory == 6) {
+		if (BootsFrame->SpriteIndex != 105) {
+			int oldEquipment = BootsFrame->SpriteIndex;
+			int newEquipment = id->SpriteIndex;
+			BootsFrame->ChangeIndex(newEquipment);
+			id->ChangeIndex(oldEquipment);
+		}
+		else {
+			BootsFrame->ChangeIndex(id->SpriteIndex);
+			id->ChangeIndex(0);
+		}
+	}
+	if (id->ItemCategory == 7) {
+		if (NecklessFrame->SpriteIndex != 107) {
+			int oldEquipment = NecklessFrame->SpriteIndex;
+			int newEquipment = id->SpriteIndex;
+			NecklessFrame->ChangeIndex(newEquipment);
+			id->ChangeIndex(oldEquipment);
+		}
+		else {
+			NecklessFrame->ChangeIndex(id->SpriteIndex);
+			id->ChangeIndex(0);
+		}
+	}
+	if (id->ItemCategory == 8) {
+		if (RingFrame->SpriteIndex != 106) {
+			int oldEquipment = RingFrame->SpriteIndex;
+			int newEquipment = id->SpriteIndex;
+			RingFrame->ChangeIndex(newEquipment);
+			id->ChangeIndex(oldEquipment);
+		}
+		else {
+			RingFrame->ChangeIndex(id->SpriteIndex);
 			id->ChangeIndex(0);
 		}
 	}
@@ -371,20 +444,58 @@ void Inventory::TakeItem(int id) {
 }
 
 void Inventory::Unequip(ItemFrame* id) {
+	TakeItem(id->SpriteIndex);
 	if (SelectedFrame == WeaponFrame) {
-		RemoveMenu();
-		TakeItem(id->SpriteIndex);
 		WeaponFrame->ChangeIndex(100);
 	}
+	if (SelectedFrame == OffHandFrame) {
+		OffHandFrame->ChangeIndex(101);
+	}
+	if (SelectedFrame == HelmFrame) {
+		HelmFrame->ChangeIndex(102);
+	}
+	if (SelectedFrame == ChestFrame) {
+		ChestFrame->ChangeIndex(103);
+	}
+	if (SelectedFrame == PantsFrame) {
+		PantsFrame->ChangeIndex(104);
+	}
+	if (SelectedFrame == BootsFrame) {
+		BootsFrame->ChangeIndex(105);
+	}
+	if (SelectedFrame == NecklessFrame) {
+		NecklessFrame->ChangeIndex(107);
+	}
+	if (SelectedFrame == RingFrame) {
+		RingFrame->ChangeIndex(106);
+	}
+	RemoveMenu();
 }
 
 void Inventory::UseItem(ItemFrame* id) {
 	std::cout << "Use" << std::endl;
-
 }
 
 void Inventory::DropItem(ItemFrame* id) {
-	id->ChangeIndex(0);
+	if (id == WeaponFrame) {
+		id->ChangeIndex(100);
+	}else if (SelectedFrame == OffHandFrame) {
+		OffHandFrame->ChangeIndex(101);
+	}else if (SelectedFrame == HelmFrame) {
+		HelmFrame->ChangeIndex(102);
+	}else if (SelectedFrame == ChestFrame) {
+		ChestFrame->ChangeIndex(103);
+	}else if (SelectedFrame == PantsFrame) {
+		PantsFrame->ChangeIndex(104);
+	}else if (SelectedFrame == BootsFrame) {
+		BootsFrame->ChangeIndex(105);
+	}else if (SelectedFrame == NecklessFrame) {
+		NecklessFrame->ChangeIndex(107);
+	}else if (SelectedFrame == RingFrame) {
+		RingFrame->ChangeIndex(106);
+	}else {
+		id->ChangeIndex(0);
+	}
 	RemoveMenu();
 }
 

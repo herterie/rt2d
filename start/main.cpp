@@ -24,12 +24,12 @@ int main( void )
 	// Core instance
 	Core core;
 
-	Inventory* inventory = new Inventory();
-	while (inventory->isRunning()) { // check status of Scene every frame
-		core.run(inventory); // update and render the current scene
+	MyScene* myscene = new MyScene();
+	while (myscene->isRunning()) { // check status of Scene every frame
+		core.run(myscene); // update and render the current scene
 		core.showFrameRate(5); // show framerate in output every n seconds
 	}
-	delete inventory;
+	delete myscene;
 
 	/*
 	// Scene01

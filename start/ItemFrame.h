@@ -30,9 +30,6 @@ public:
 	/// @brief Destructor
 	virtual ~ItemFrame();
 
-	//get mouse x and y
-	void Mouse(int x, int y);
-
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
