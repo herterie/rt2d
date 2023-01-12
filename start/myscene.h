@@ -12,8 +12,10 @@
 #include <rt2d/scene.h>
 
 #include "ActionButton.h"
+#include "UiButton.h"
 #include "ItemFrame.h"
 #include "Inventory.h"
+#include "Player.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -22,6 +24,16 @@ public:
 	//creating mouse x and y cords
 	int mousex;
 	int mousey;
+
+	bool ShowInventoryIcon;
+	bool ShowInventory;
+
+	Player* player;
+
+	UiButton* InventoryButton;
+	UiButton* SettingButton;
+
+	ActionButton* StartBattle;
 
 	Inventory* inventory;
 	/// @brief Constructor
