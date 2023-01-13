@@ -36,7 +36,6 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
 
-private:
 	//variabels
 
 	//Vectors for frames
@@ -65,7 +64,7 @@ private:
 	ItemFrame* BootsFrame;
 	ItemFrame* NecklessFrame;
 	ItemFrame* RingFrame;
-	
+
 
 	ActionButton* EquipBtn;
 	ActionButton* UseBtn;
@@ -83,6 +82,9 @@ private:
 	void Unequip(ItemFrame* id);
 
 
+
+private:
+	
 };
 
 #endif /* INVENTORY_H */

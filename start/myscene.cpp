@@ -21,18 +21,22 @@ MyScene::MyScene() : Scene()
 	ShowInventory = false;
 
 	//new
-	player = new Player;
+	inventory = new Inventory();
+
+	player = new Player(inventory);
+	enemy = new Enemy;
 
 	InventoryButton = new UiButton(0);
 	SettingButton = new UiButton(1);
-
-	inventory = new Inventory();
 
 	StartBattle = new ActionButton("Battle");
 
 	//position
 	player->position.y = 370;
 	player->position.x = 315;
+
+	enemy->position.y = 390;
+	enemy->position.x = 963;
 
 	SettingButton->position.y = 42;
 
@@ -41,6 +45,7 @@ MyScene::MyScene() : Scene()
 
 	//add child
 	addChild(player);
+	addChild(enemy);
 	addChild(InventoryButton);
 	addChild(SettingButton);
 	addChild(inventory);
@@ -50,11 +55,13 @@ MyScene::MyScene() : Scene()
 MyScene::~MyScene()
 {
 	this->removeChild(player);
+	this->removeChild(enemy);
 	this->removeChild(InventoryButton);
 	this->removeChild(SettingButton);
 	this->removeChild(inventory);
 
 	delete player;
+	delete enemy;
 	delete InventoryButton;
 	delete SettingButton;
 	delete inventory;

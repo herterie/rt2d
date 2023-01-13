@@ -6,46 +6,32 @@
  * @brief description of MyScene behavior.
  */
 
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef ENEMY_H
+#define ENEMY_H
 
 #include <rt2d/scene.h>
-#include <rt2d/text.h>
 #include "ProgressBar.h"
 #include "Icon.h"
-#include "Inventory.h"
-#include "ItemFrame.h"
+#include <rt2d/text.h>
 
  /// @brief The MyScene class is the Scene implementation.
-class Player : public Scene
+class Enemy : public Scene
 {
 public:
 	float MaxHp;
 	float Hp;
-	float MaxMana;
-	float Mana;
 	int Armor;
-	int Energy;
-
-	Inventory* inventory;
 
 	ProgressBar* HpBackBar;
 	ProgressBar* HpBar;
 
-	ProgressBar* ManaBackBar;
-	ProgressBar* ManaBar;
-
 	Icon* armorIcon;
-	Icon* energyIcon;
+	//Icon* intentIcon;
 
-	Text* energyText;
-	Text* armorText;
-	Text* HpText;
-	Text* ManaText;
 	/// @brief Constructor
-	Player(Inventory* inv);
+	Enemy();
 	/// @brief Destructor
-	virtual ~Player();
+	virtual ~Enemy();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
@@ -56,4 +42,4 @@ private:
 	//variabels
 };
 
-#endif /* PLAYER_H */
+#endif /* ENEMY_H */#pragma once

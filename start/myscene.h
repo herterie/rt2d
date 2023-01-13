@@ -16,6 +16,8 @@
 #include "ItemFrame.h"
 #include "Inventory.h"
 #include "Player.h"
+#include "Enemy.h"
+#include "Battle.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -29,6 +31,7 @@ public:
 	bool ShowInventory;
 
 	Player* player;
+	Enemy* enemy;
 
 	UiButton* InventoryButton;
 	UiButton* SettingButton;
