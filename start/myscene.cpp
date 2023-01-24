@@ -119,8 +119,7 @@ void MyScene::Battle() {
 	int BattleState = 0;
 	Abilitie* ab1;
 	Abilitie* ab2;
-	Abilitie* ab3;
-	Abilitie* ab4;
+
 	switch (BattleState)
 	{
 	case 0://choose target and attack
@@ -133,17 +132,24 @@ void MyScene::Battle() {
 		case 2:
 			break;
 		case 3:
-			ab1 = new Abilitie(6);
-			ab2 = new Abilitie(7);
+			ab1 = new Abilitie(5);
+			ab2 = new Abilitie(6);
 
 			ab1->position.x = 150;
-			ab1->position.y = 300;
+			ab1->position.y = 600;
 
 			ab2->position.x = 250;
-			ab2->position.y = 300;
+			ab2->position.y = 600;
 
 			this->addChild(ab1);
 			this->addChild(ab2);
+
+			if (ab1->Pressed) {
+				std::cout << "Abilitie 1" << std::endl;
+			}
+			if (ab2->Pressed) {
+				std::cout << "Abilitie 2" << std::endl;
+			}
 			break;
 		default:
 			break;

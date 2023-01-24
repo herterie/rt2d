@@ -32,9 +32,6 @@ void Abilitie::update(float deltaTime)
 			Pressed = false;
 		}
 	}
-	else {
-		Pressed = false;
-	}
 }
 
 void Abilitie::UpdateFrame() {
@@ -74,12 +71,6 @@ void Abilitie::UpdateFrame() {
 		break;
 	}
 }
-
-void Abilitie::ChangeIndex(int id) {
-	SpriteIndex = id;
-	UpdateFrame();
-}
-
 
 bool Abilitie::CheckMouseHover() { // AABB - AABB collision with mouse
 	int mouse_x = input()->getMouseX();
