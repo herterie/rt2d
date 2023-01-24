@@ -14,14 +14,18 @@ Player::Player(Inventory* inv) : Scene()
 {
 	this->addSprite("assets/CharacterSprites/PlayerSpriteConcept.tga");
 
-	Inventory* inventory = inv;
+	inventory = inv;
 
+	Energy = 3;
 	MaxHp = 100.0f;
 	Hp = MaxHp;
 	MaxMana = 20.0f;
 	Mana = MaxMana;
 	Armor = 0;
-	Energy = 3;
+	Strenght = 0;
+	Dexterity = 0;
+	Intellect = 0;
+	luck = 0;
 
 	//energy icon and text
 	energyIcon = new Icon;
@@ -43,15 +47,7 @@ Player::Player(Inventory* inv) : Scene()
 
 	armorText = new Text();
 	armorText->position.y = 125;
-	if (Armor < 10) {
-		armorText->position.x = -95;
-	}
-	else if (Armor < 100) {
-		armorText->position.x = -110;
-	}
-	else {
-		armorText->position.x = -125;
-	}
+	
 	armorText->scale = Point2(1.0f, 1.0f);
 	armorText->message(std::to_string(Armor));
 
@@ -96,6 +92,16 @@ Player::Player(Inventory* inv) : Scene()
 	addChild(ManaBar);
 	addChild(HpText);
 	addChild(ManaText);
+
+	Equipment.push_back(inventory->WeaponFrame);
+	Equipment.push_back(inventory->OffHandFrame);
+	Equipment.push_back(inventory->HelmFrame);
+	Equipment.push_back(inventory->ChestFrame);
+	Equipment.push_back(inventory->PantsFrame);
+	Equipment.push_back(inventory->BootsFrame);
+	Equipment.push_back(inventory->NecklessFrame);
+	Equipment.push_back(inventory->RingFrame);
+	ChangeStats();
 }
 
 Player::~Player()
@@ -123,11 +129,114 @@ void Player::update(float deltaTime)
 	ManaBar->scale = Point3(mc, 1.0f, 1.0f);
 	armorText->message(std::to_string(Armor));
 
-	
-	/* move to update funciton
-	if (inventory->WeaponFrame->SpriteIndex != 100) {
-		Armor = 15;
+	if (Armor < 10) {
+		armorText->position.x = -95;
 	}
-	*/
+	else if (Armor < 100) {
+		armorText->position.x = -110;
+	}
+	else {
+		armorText->position.x = -125;
+	}
+	ChangeStats();
+}
+
+void Player::ChangeStats() {
+	Armor = 0;
+	Strenght = 0;
+	Dexterity = 0;
+	Intellect = 0;
+	luck = 0;
+	for (int i = 0; i < Equipment.size(); i++) {
+		switch (Equipment[i]->SpriteIndex)
+		{
+		case 1:
+			Strenght += 5;
+				break;
+		case 2:
+			Dexterity += 7;
+			break;
+		case 3:
+			Intellect += 5;
+			break;
+		case 4:
+			Armor += 3;
+			break;
+		case 5:
+			Dexterity += 3;
+			break;
+		case 6:
+			Intellect += 3;
+			break;
+		case 7:
+			Armor += 3;
+			Strenght += 1;
+			break;
+		case 8:
+			Armor += 2;
+			Dexterity += 1;
+			break;
+		case 9:
+			Armor += 1;
+			Intellect += 3;
+			break;
+		case 10:
+			Armor += 3;
+			Strenght += 1;
+			break;
+		case 11:
+			Armor += 2;
+			Dexterity += 1;
+			break;
+		case 12:
+			Armor += 1;
+			Intellect += 3;
+			break;
+		case 13:
+			Armor += 3;
+			Strenght += 1;
+			break;
+		case 14:
+			Armor += 2;
+			Dexterity += 1;
+			break;
+		case 15:
+			Armor += 1;
+			Intellect += 3;
+			break;
+		case 16:
+			Armor += 3;
+			Strenght += 1;
+			break;
+		case 17:
+			Armor += 2;
+			Dexterity += 1;
+			break;
+		case 18:
+			Armor += 1;
+			Intellect += 3;
+			break;
+		case 19:
+			Strenght += 3;
+			break;
+		case 20:
+			Dexterity += 3;
+			break;
+		case 21:
+			Intellect += 3;
+			break;
+		case 22:
+			Strenght += 3;
+			break;
+		case 23:
+			Dexterity += 3;
+			break;
+		case 24:
+			Intellect += 3;
+			break;
+		default:
+			break;
+		}
+	}
 }
 

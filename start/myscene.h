@@ -17,7 +17,7 @@
 #include "Inventory.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Battle.h"
+#include "Abilitie.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class MyScene : public Scene
@@ -29,6 +29,7 @@ public:
 
 	bool ShowInventoryIcon;
 	bool ShowInventory;
+	bool BattleStarted;
 
 	Player* player;
 	Enemy* enemy;
@@ -48,6 +49,7 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
+	void Battle();
 
 private:
 	//variabels

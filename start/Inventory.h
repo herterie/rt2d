@@ -37,6 +37,17 @@ public:
 	virtual void update(float deltaTime);
 
 	//variabels
+	int Armor;
+	int Strenght;
+	int Dexterity;
+	int Intellect;
+	int luck;
+
+	Text* ArmorTxt;
+	Text* StrenghtTxt;
+	Text* DexterityTxt;
+	Text* IntellectTxt;
+	Text* luckTxt;
 
 	//Vectors for frames
 	std::vector<ItemFrame*> Frames;
@@ -80,6 +91,7 @@ public:
 	void CancelMenu(ItemFrame* id);
 	void TakeItem(int id);
 	void Unequip(ItemFrame* id);
+	void ChangeStats();
 
 
 

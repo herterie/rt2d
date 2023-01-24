@@ -19,12 +19,14 @@ MyScene::MyScene() : Scene()
 
 	ShowInventoryIcon = true;
 	ShowInventory = false;
+	BattleStarted = false;
 
 	//new
 	inventory = new Inventory();
 
 	player = new Player(inventory);
-	enemy = new Enemy;
+
+	enemy = new Enemy();
 
 	InventoryButton = new UiButton(0);
 	SettingButton = new UiButton(1);
@@ -73,6 +75,8 @@ void MyScene::update(float deltaTime)
 	if (StartBattle->pressed) {
 		ShowInventoryIcon = false;
 		ShowInventory = false;
+		BattleStarted = true;
+		inventory->RemoveMenu();
 		this->removeChild(StartBattle);
 	}
 	if (InventoryButton->Leftpressed) {
@@ -90,6 +94,7 @@ void MyScene::update(float deltaTime)
 	else {
 		inventory->position.y = -1500;
 		inventory->position.x = -1500;
+		inventory->RemoveMenu();
 	}
 	if (ShowInventoryIcon) {
 		InventoryButton->position.y = 42;
@@ -104,6 +109,54 @@ void MyScene::update(float deltaTime)
 	// Escape key stops the Scene
 	if (input()->getKeyUp(KeyCode::Escape)) {
 		this->stop();
+	}
+	if (BattleStarted) {
+		Battle();
+	}
+}
+
+void MyScene::Battle() {
+	int BattleState = 0;
+	Abilitie* ab1;
+	Abilitie* ab2;
+	Abilitie* ab3;
+	Abilitie* ab4;
+	switch (BattleState)
+	{
+	case 0://choose target and attack
+		switch (player->inventory->WeaponFrame->SpriteIndex)
+		{
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			ab1 = new Abilitie(6);
+			ab2 = new Abilitie(7);
+
+			ab1->position.x = 150;
+			ab1->position.y = 300;
+
+			ab2->position.x = 250;
+			ab2->position.y = 300;
+
+			this->addChild(ab1);
+			this->addChild(ab2);
+			break;
+		default:
+			break;
+		}
+		break;
+	case 1://do attack and check for energy
+
+		break;
+	case 2://Enemy attacks
+
+		break;
+	default:
+		break;
 	}
 }
 

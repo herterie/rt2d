@@ -13,6 +13,12 @@
 
 Inventory::Inventory() : Scene()
 {
+	Armor = 0;
+	Strenght = 0;
+	Dexterity = 0;
+	Intellect = 0;
+	luck = 0;
+
 	DropDown = false;
 	SelectedFrame = nullptr;
 
@@ -20,6 +26,37 @@ Inventory::Inventory() : Scene()
 	mousey = 0;
 
 	FrameOffset = 50;
+
+	ArmorTxt = new Text();
+	ArmorTxt->position.y = SHEIGHT - 280;
+	ArmorTxt->position.x = SWIDTH - 188;
+	ArmorTxt->scale = Point2(0.7f, 0.7f);
+	ArmorTxt->message("Armor: " + std::to_string(Armor));
+
+	StrenghtTxt = new Text();
+	StrenghtTxt->position.y = SHEIGHT - 250;
+	StrenghtTxt->position.x = SWIDTH - 188;
+	StrenghtTxt->scale = Point2(0.7f, 0.7f);
+	StrenghtTxt->message("STR: " + std::to_string(Strenght));
+
+	DexterityTxt = new Text();
+	DexterityTxt->position.y = SHEIGHT - 220;
+	DexterityTxt->position.x = SWIDTH - 188;
+	DexterityTxt->scale = Point2(0.7f, 0.7f);
+	DexterityTxt->message("DEX: " + std::to_string(Dexterity));
+
+	IntellectTxt = new Text();
+	IntellectTxt->position.y = SHEIGHT - 190;
+	IntellectTxt->position.x = SWIDTH - 188;
+	IntellectTxt->scale = Point2(0.7f, 0.7f);
+	IntellectTxt->message("INT: " + std::to_string(Intellect));
+
+	luckTxt = new Text();
+	luckTxt->position.y = SHEIGHT - 160;
+	luckTxt->position.x = SWIDTH - 188;
+	luckTxt->scale = Point2(0.7f, 0.7f);
+	luckTxt->message("Luck: " + std::to_string(luck));
+
 
 	//making of drop down menu buttons
 	EquipBtn = new ActionButton("Equip");
@@ -145,6 +182,13 @@ Inventory::Inventory() : Scene()
 	Frame12->position.x = 160;
 	Frames.push_back(Frame12);
 
+	//add text 
+	this->addChild(ArmorTxt);
+	this->addChild(StrenghtTxt);
+	this->addChild(DexterityTxt);
+	this->addChild(IntellectTxt);
+	this->addChild(luckTxt);
+
 	//add equipment frames
 	this->addChild(WeaponFrame);
 	this->addChild(OffHandFrame);
@@ -248,6 +292,7 @@ void Inventory::update(float deltaTime)
 			Unequip(SelectedFrame);
 		}
 	}
+	ChangeStats();
 }
 
 void Inventory::DropDownMenu(ItemFrame* id, int type) {
@@ -504,3 +549,106 @@ void Inventory::CancelMenu(ItemFrame* id) {
 	
 }
 
+void Inventory::ChangeStats() {
+	Armor = 0;
+	Strenght = 0;
+	Dexterity = 0;
+	Intellect = 0;
+	luck = 0;
+	for (int i = 0; i < Equipt.size(); i++) {
+		switch (Equipt[i]->SpriteIndex)
+		{
+		case 1:
+			Strenght += 5;
+			break;
+		case 2:
+			Dexterity += 7;
+			break;
+		case 3:
+			Intellect += 5;
+			break;
+		case 4:
+			Armor += 3;
+			break;
+		case 5:
+			Dexterity += 3;
+			break;
+		case 6:
+			Intellect += 3;
+			break;
+		case 7:
+			Armor += 3;
+			Strenght += 1;
+			break;
+		case 8:
+			Armor += 2;
+			Dexterity += 1;
+			break;
+		case 9:
+			Armor += 1;
+			Intellect += 3;
+			break;
+		case 10:
+			Armor += 3;
+			Strenght += 1;
+			break;
+		case 11:
+			Armor += 2;
+			Dexterity += 1;
+			break;
+		case 12:
+			Armor += 1;
+			Intellect += 3;
+			break;
+		case 13:
+			Armor += 3;
+			Strenght += 1;
+			break;
+		case 14:
+			Armor += 2;
+			Dexterity += 1;
+			break;
+		case 15:
+			Armor += 1;
+			Intellect += 3;
+			break;
+		case 16:
+			Armor += 3;
+			Strenght += 1;
+			break;
+		case 17:
+			Armor += 2;
+			Dexterity += 1;
+			break;
+		case 18:
+			Armor += 1;
+			Intellect += 3;
+			break;
+		case 19:
+			Strenght += 3;
+			break;
+		case 20:
+			Dexterity += 3;
+			break;
+		case 21:
+			Intellect += 3;
+			break;
+		case 22:
+			Strenght += 3;
+			break;
+		case 23:
+			Dexterity += 3;
+			break;
+		case 24:
+			Intellect += 3;
+			break;
+		default:
+			break;
+		}
+	}
+	ArmorTxt->message("Armor: " + std::to_string(Armor));
+	StrenghtTxt->message("STR: " + std::to_string(Strenght));
+	DexterityTxt->message("DEX: " + std::to_string(Dexterity));
+	IntellectTxt->message("INT: " + std::to_string(Intellect));
+	luckTxt->message("Luck: " + std::to_string(luck));
+}

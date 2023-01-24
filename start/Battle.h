@@ -19,10 +19,10 @@ class Battle : public Scene
 {
 public:
 	Player* player;
-	Enemy* enemy;
+	//Enemy* enemy;
 
 	/// @brief Constructor
-	Battle();
+	Battle(Player* pl);
 	/// @brief Destructor
 	virtual ~Battle();
 

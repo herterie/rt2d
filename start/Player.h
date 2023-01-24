@@ -26,6 +26,12 @@ public:
 	float Mana;
 	int Armor;
 	int Energy;
+	int Strenght;
+	int Dexterity;
+	int Intellect;
+	int luck;
+
+	std::vector<ItemFrame*> Equipment;
 
 	Inventory* inventory;
 
@@ -51,6 +57,8 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
+
+	void ChangeStats();
 
 private:
 	//variabels

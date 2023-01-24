@@ -10,18 +10,14 @@
 #include "Battle.h"
 
 
-Battle::Battle() : Scene()
+Battle::Battle(Player* pl) : Scene()
 {
 	//new
-	//player = new Player;
-	enemy = new Enemy;
+	player = pl;
 
 	//position
 	player->position.y = 370;
 	player->position.x = 315;
-
-	enemy->position.y = 390;
-	enemy->position.x = 963;
 
 	//add child
 	addChild(player);
@@ -30,10 +26,8 @@ Battle::Battle() : Scene()
 Battle::~Battle()
 {
 	this->removeChild(player);
-	this->removeChild(enemy);
 
 	delete player;
-	delete enemy;
 }
 
 void Battle::update(float deltaTime)
